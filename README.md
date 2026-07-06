@@ -1,66 +1,322 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Gestor de Tareas - Netberry
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descripción
 
-## About Laravel
+Aplicación de gestión de tareas desarrollada con Laravel.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Funcionalidades implementadas:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Crear tareas.
+- Eliminar tareas.
+- Asignar múltiples categorías a cada tarea.
+- Filtrar tareas por una o varias categorías.
+- Interfaz dinámica mediante peticiones AJAX (Axios), sin recarga de página.
+- Interfaz responsive desarrollada con Bootstrap 5.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Tecnologías utilizadas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP 8.2
+- Laravel 10
+- MySQL 8
+- Docker
+- Bootstrap 5
+- Axios
+- Vite
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Instalación
 
-## Laravel Sponsors
+# Proyecto Laravel + Docker
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Opción 1: Windows + WSL + Docker Desktop (Recomendada en Windows)
 
-### Premium Partners
+Para trabajar en Windows se recomienda utilizar **WSL 2** con una distribución **Ubuntu** y **Docker Desktop** para evitar que la manera en la que interactúa Docker con el sistema de archivos de Windows afecte negativamente al rendimiento.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
+### Instalar Ubuntu
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Desde Microsoft Store instalar la distribución **Ubuntu** y completar la configuración inicial (usuario y contraseña).
+Se puede encontrar en el siguiente enlace (o en la propia Microsoft Store):
 
-## Code of Conduct
+#### Ubuntu para Windows:
+https://apps.microsoft.com/detail/9PDXGNCFSCZV?hl=neutral&gl=ES&ocid=pdpshare
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Instalar Docker Desktop
 
-## Security Vulnerabilities
+Instalar Docker Desktop y asegurarse de que:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* Está habilitada la integración con WSL 2.
+    * Para esto, vaya a ajustes de Docker Desktop: **Settings → Resources → General**  y seleccione "Use the WSL 2 based engine" (o una opción similar dependiendo de la versión de Docker Desktop).
+* La distribución Ubuntu aparece habilitada
+    * Para esto, vaya a ajustes de Docker Desktop: y habilite el switch en la sección de Ubuntu en **Settings → Resources → WSL Integration**.
 
-## License
+Se puede encontrar en el siguiente enlace (o en la propia Microsoft Store):
+#### Docker Desktop para Windows
+https://apps.microsoft.com/detail/XP8CBJ40XLBWKX?hl=es-ES&gl=ES&ocid=pdpshare
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Una vez configurado todo, para abrir la consola de Ubuntu, simplemente abra el programa llamado "Ubuntu" desde el Inicio de Windows.
+
+Nota: Para poder clonar el repositorio, si no se tiene Git instalado, se debe realizar:
+
+```bash
+sudo apt update
+sudo apt install git
+```
+
+Clone el repositorio ejecutando:
+```bash
+git clone https://github.com/LauDaphne/netberry.git
+```
+
+Nota: Si fuera necesario, instale make en su distribución de Ubuntu/Linux usando
+```bash
+sudo apt update
+sudo apt install make
+```
+
+Dentro de la carpeta del proyecto, ejecute el siguiente comando:
+
+```bash
+cd netberry
+make install
+```
+
+Durante la instalación se le pedirá que introduzca los datos de configuración de la base de datos.
+
+
+### Actualización de WSL
+
+Es posible que, dependiendo de la versión de Windows utilizada, Docker Desktop le solicite actualizar wsl.
+
+Para ello debe ejecutar en PowerShell:
+
+```powershell
+wsl --update
+```
+
+Reiniciar el equipo si Windows lo solicita.
+
+> **Importante 1**
+>
+> Es posible que requiera activar características de su equipo. En la barra de búsqueda de Windows introduzca "Activar o desactivar las características de Windows".
+> Luego, asegúrese de que tiene marcadas las siguientes opciones:
+> * Subsistema de Windows para Linux
+> * Plataforma de máquina virtual
+> * Hyper-V (opcional).
+
+> **Importante 2**
+>
+> Se recomienda guardar el proyecto dentro del sistema de archivos de Ubuntu (por ejemplo `~/projects/netberry-tasks`) y no en `C:\...`, ya que el rendimiento de Docker es considerablemente mejor.
+
+
+---
+
+
+## Opción 2: Ubuntu (Linux)
+
+Es necesario tener instalado:
+
+* Git
+* Docker Engine
+* Docker Compose
+* Make
+
+
+### Instalación de los requisitos:
+
+### Git
+
+```bash
+sudo apt update
+sudo apt install git
+```
+
+### Docker Engine y Docker Compose
+
+Se recomienda seguir la guía oficial de Docker para Ubuntu:
+
+https://docs.docker.com/engine/install/ubuntu/
+
+Tras la instalación, verifica que Docker y Docker Compose están disponibles:
+
+```bash
+docker --version
+docker compose version
+```
+
+> **Nota:** En las versiones actuales de Docker, `docker compose` viene incluido como un subcomando de Docker, por lo que no es necesario instalar `docker-compose` por separado.
+
+#### Make
+
+```bash
+sudo apt update
+sudo apt install make
+```
+
+## Instalación del proyecto
+
+Una vez instalados los requisitos, clonar el repositorio:
+
+```bash
+git clone https://github.com/LauDaphne/netberry.git
+```
+Ejecutar el siguiente comando desde dentro de la carpeta del proyecto:
+
+```bash
+cd netberry
+make install
+```
+
+---
+
+## Explicación de Instalación automática (Linux / WSL)
+
+El comando `make install` realiza automáticamente las siguientes tareas:
+
+* Genera el archivo `.env`.
+* Solicita las credenciales de la base de datos.
+* Levanta los contenedores Docker.
+* Espera a que MySQL esté disponible.
+* Ajusta los permisos de Laravel.
+* Instala las dependencias de Composer.
+* Genera la `APP_KEY`.
+* Ejecuta las migraciones.
+* Ejecuta los seeders.
+* Instala las dependencias de Node.
+* Compila los assets.
+
+---
+
+## Instalación en Windows sin Ubuntu
+
+Si se desea usar Windows sin instalar Ubuntu tenga en cuenta que el rendimiento puede ser inferior debido a cómo interactúa Docker con el sistema de archivos de Windows.
+
+Aún así, es necesario Docker Desktop. Puede consultar cómo instalarlo en la opción 1.
+### 1. Crear el archivo de configuración
+
+Copiar el archivo de ejemplo llamado .env.example en un nuevo archivo llamado .env
+
+---
+
+### 2. Configurar la base de datos
+
+Editar el archivo `.env` y configurar las siguientes variables (puede utilizar el valor que usted desee):
+
+```dotenv
+DB_DATABASE=netberry
+DB_USERNAME=netberryUser
+DB_PASSWORD=ntbrryUserP455
+DB_ROOT_PASSWORD=ntbrryRootP455
+```
+
+---
+
+### 3. Levantar los contenedores
+
+```bash
+docker compose up -d
+```
+
+---
+
+### 4. Instalar las dependencias PHP
+
+```bash
+docker compose exec php composer install
+```
+Nota: Antes de realizar este paso es necesario que el servicio de MySQL esté listo y activo para recibir peticiones, lo que puede tardar entre 5 y 30 segundos aproximadamente.
+
+
+---
+
+### 5. Generar la clave de Laravel
+
+```bash
+docker compose exec php php artisan key:generate
+```
+
+---
+
+### 6. Ejecutar las migraciones
+
+```bash
+docker compose exec php php artisan migrate
+```
+
+---
+
+### 7. Ejecutar los seeders
+
+```bash
+docker compose exec php php artisan db:seed
+```
+
+---
+
+### 8. Instalar las dependencias de Node
+
+```bash
+docker compose exec node npm install
+```
+
+---
+
+### 9. Compilar los assets
+
+```bash
+docker compose exec node npm run build
+```
+
+---
+
+## Puesta en marcha
+
+Una vez finalizada la instalación, los contenedores permanecerán ejecutándose en segundo plano.
+
+Para iniciar el proyecto en futuras ocasiones:
+
+```bash
+docker compose up -d
+```
+
+Para detenerlo:
+
+```bash
+docker compose down
+```
+Eliminación de contenedores y volúmenes (permanente):
+
+```bash
+docker compose down -v
+```
+
+---
+
+## Estructura del proyecto
+
+El proyecto sigue una arquitectura **MVC** complementado con **Services**.
+
+La estructura principal es:
+
+- Controllers
+- Services
+- Form Requests
+- Models
+- Blade Partials
+- Módulos JavaScript
+
+---
+
+## Aspectos técnicos destacados
+
+- Uso de **Axios** para realizar peticiones AJAX sin recargar la página.
+- Validaciones mediante **Form Requests**.
+- Lógica de negocio encapsulada en **Services**.
+- Consultas mediante **Eloquent** con **eager loading** para evitar el problema **N+1**.
+- Filtrado por múltiples categorías utilizando relaciones de Eloquent.
+- Componentes Blade reutilizables para mejorar el mantenimiento del código.
+
+---
