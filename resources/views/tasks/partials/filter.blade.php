@@ -10,7 +10,7 @@
 
     </h5>
 
-    <div class="d-flex gap-3">
+    <div class="d-flex gap-4">
 
         @foreach($categories as $category)
 
@@ -33,24 +33,11 @@
             </div>
 
         @endforeach
+            <div id="filter-loading" class="invisible">
+                <div class="spinner-border spinner-border-sm" role="status"></div>
+            </div>
 
     </div>
 
 </div>
-<div
-    id="filter-loading"
-    class="text-center my-3 d-none"
->
 
-    <div
-        class="spinner-border spinner-border-sm"
-        role="status"
-    >
-        <span class="visually-hidden">
-
-            Loading...
-
-        </span>
-    </div>
-
-</div>

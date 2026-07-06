@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {showToast} from "../toast";
 
 document.addEventListener('change', async (event) => {
 
@@ -18,7 +19,7 @@ document.addEventListener('change', async (event) => {
 
     try {
         if (loading) {
-            loading.classList.remove('d-none');
+            loading.classList.remove('invisible');
         }
         document
             .querySelectorAll('.filter-category')
@@ -35,17 +36,21 @@ document.addEventListener('change', async (event) => {
     } catch (error) {
 
         if (loading) {
-            loading.classList.add('d-none');
+            loading.classList.add('invisible');
         }
         document
             .querySelectorAll('.filter-category')
             .forEach(input => input.disabled = false);
-        console.error(error);
+
+        showToast(
+            'An unexpected error occurred.',
+            'danger'
+        );
 
     } finally {
 
         if (loading) {
-            loading.classList.add('d-none');
+            loading.classList.add('invisible');
         }
         document
             .querySelectorAll('.filter-category')
