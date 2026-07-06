@@ -44,12 +44,40 @@ Se puede encontrar en el siguiente enlace (o en la propia Microsoft Store):
 #### Ubuntu para Windows:
 https://apps.microsoft.com/detail/9PDXGNCFSCZV?hl=neutral&gl=ES&ocid=pdpshare
 
+#### Pasar WSL a WSL2
+
+Probablemente, tras la instalación de Ubuntu desde la Microsoft Store, tengamos WSL en su versión 1.
+Para utilizar Docker Desktop es necesario que esté en la versión 2.
+
+En primer lugar, comprobaremos la versión instalada ejecutando en PowerShell:
+
+```powershell
+wsl -l -v
+```
+
+Se nos mostrará algo como esto:
+```powershell
+NAME                 STATE           VERSION
+Ubuntu2.1            Running         1
+```
+
+Si en la columna VERSION de la distribución llamada Ubuntu (también puede llamarse Ubuntu2.1 o similares) aparece 2, habremos terminado. Sin embargo, si aparece un 1, debemos ejecutar:
+
+```powershell
+wsl --set-version Ubuntu 2
+```
+IMPORTANTE: En lugar de Ubuntu, en el comando anterior hay que poner el nombre completo que aparece en la columna NAME.
+
+Este proceso puede tomar varios minutos.
+
+
+
 ### Instalar Docker Desktop
 
 Instalar Docker Desktop y asegurarse de que:
 
 * Está habilitada la integración con WSL 2.
-    * Para esto, vaya a ajustes de Docker Desktop: **Settings → Resources → General**  y seleccione "Use the WSL 2 based engine" (o una opción similar dependiendo de la versión de Docker Desktop).
+    * Para esto, vaya a ajustes de Docker Desktop: **Settings → Resources → General**  y seleccione la opción WSL2 bajo el texto "Choose how to run Docker containers" (o una opción similar dependiendo de la versión de Docker Desktop).
 * La distribución Ubuntu aparece habilitada
     * Para esto, vaya a ajustes de Docker Desktop: y habilite el switch en la sección de Ubuntu en **Settings → Resources → WSL Integration**.
 
