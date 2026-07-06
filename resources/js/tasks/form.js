@@ -1,3 +1,5 @@
+import {showToast} from "../toast";
+
 const form = document.getElementById('task-form');
 
 function clearErrors() {
@@ -73,7 +75,7 @@ if (form) {
             prependTask(
                 response.data.html
             );
-
+            showToast(response.data.message);
             resetForm(form);
 
         } catch (error) {
@@ -88,7 +90,10 @@ if (form) {
 
             }
 
-            console.error(error);
+            showToast(
+                'An unexpected error occurred.',
+                'danger'
+            );
 
         }
 

@@ -1,32 +1,61 @@
 import axios from 'axios';
+import { Modal } from 'bootstrap';
+import { showToast } from '../toast';
 
-document.addEventListener('click', async (event) => {
+const modalElement = document.getElementById('deleteTaskModal');
+
+const modal = Modal.getOrCreateInstance(modalElement);
+
+const confirmButton = document.getElementById('confirm-delete-task');
+
+let currentButton = null;
+
+document.addEventListener('click', (event) => {
 
     if (!event.target.classList.contains('delete-task')) {
         return;
     }
 
-    if (!confirm('Delete this task?')) {
+    currentButton = event.target;
+
+    modal.show();
+
+});
+
+confirmButton.addEventListener('click', async () => {
+
+    if (!currentButton) {
         return;
     }
 
-    const button = event.target;
-
-    button.disabled = true;
+    confirmButton.disabled = true;
 
     try {
 
-        await axios.delete(button.dataset.url);
+        const response = await axios.delete(
+            currentButton.dataset.url
+        );
 
-        button.closest('tr').remove();
+        currentButton.closest('tr').remove();
 
         checkEmptyTable();
 
-    } catch (error) {
+        showToast(response.data.message);
 
-        console.error(error);
+        modal.hide();
 
-        button.disabled = false;
+    } catch {
+
+        showToast(
+            'An unexpected error occurred.',
+            'danger'
+        );
+
+    } finally {
+
+        confirmButton.disabled = false;
+
+        currentButton = null;
 
     }
 
@@ -36,7 +65,7 @@ function checkEmptyTable() {
 
     const tbody = document.getElementById('tasks-table-body');
 
-    if (tbody.querySelectorAll('.task-row').length > 0) {
+    if (tbody.querySelectorAll('.task-row').length) {
         return;
     }
 
