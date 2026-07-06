@@ -74,6 +74,7 @@
         <div class="col-md-2">
 
             <button
+                id="create-task-button"
                 type="submit"
                 class="btn btn-primary w-100"
             >

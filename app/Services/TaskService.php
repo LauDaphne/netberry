@@ -11,15 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class TaskService
 {
-    /*
-    public function getAll(): Collection
-    {
-        return Task::query()
-            ->with('categories')
-            ->orderByDesc('created_at')
-            ->get();
-    }
-    */
 
     public function getAll(array $categoryIds = []): Collection
     {
